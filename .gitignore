@@ -1,0 +1,91 @@
+# ==============================================================================
+# SECRETS, CREDENTIALS & SENSITIVE KEYS (ABSOLUTE BLOCK - NEVER COMMIT)
+# ==============================================================================
+*.pem
+*.key
+*.pub
+*.crt
+*.pfx
+*.p12
+*.id_rsa*
+*.env*
+.env
+.env.*
+!.env.example
+secrets/
+*credentials*
+*secret*
+
+# ==============================================================================
+# TERRAFORM STATE & PROVIDER BINARIES (NEVER COMMIT)
+# ==============================================================================
+# Local .terraform directories containing megabytes of downloaded provider binaries
+**/.terraform/*
+.terraform/
+
+# .tfstate files contain raw resource outputs, private keys, and passwords!
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variable files containing secret parameters
+*.tfvars
+*.tfvars.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# ==============================================================================
+# PYTHON ARTIFACTS & CACHES
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+
+# ==============================================================================
+# DOCKER & SYSTEM SCRATCH
+# ==============================================================================
+*.log
+.docker/
+.system_generated/
+scratch/
+
+# ==============================================================================
+# OS & IDE ARTIFACTS
+# ==============================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
