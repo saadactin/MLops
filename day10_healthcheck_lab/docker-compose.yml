@@ -1,0 +1,26 @@
+services:
+  # The Web App that connects to Postgres
+  web:
+    image: saad-healthcheck-web:v1
+    container_name: saad-web-app
+    environment:
+      - DB_HOST=db
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret123
+    depends_on:
+      db:
+        condition: service_healthy  # 🛡️ THE FIX: Wait until the database passes its healthcheck!
+
+  # The Postgres Database
+  db:
+    image: postgres:15-alpine
+    container_name: saad-postgres-db
+    environment:
+      - POSTGRES_PASSWORD=secret123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  # Test command to check if Postgres is accepting queries
+      interval: 2s        # Run health check every 2 seconds
+      timeout: 3s         # Fail check if it takes longer than 3 seconds
+      retries: 5          # Try 5 times before declaring the container unhealthy
+      start_period: 3s    # Grace period while postgres boots up

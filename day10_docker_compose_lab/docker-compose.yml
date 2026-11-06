@@ -1,0 +1,26 @@
+services:
+  # Service 1: The Python Web App
+  web:
+    build: .
+    container_name: saad-compose-web
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis-db
+      - REDIS_PORT=6379
+    depends_on:
+      - redis-db
+    restart: always
+
+  # Service 2: The Redis Database
+  redis-db:
+    image: redis:7
+    container_name: saad-compose-redis
+    volumes:
+      - redis_vault:/data
+    restart: always
+
+# Persistent Volume definition
+volumes:
+  redis_vault:
+
